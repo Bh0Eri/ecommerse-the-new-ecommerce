@@ -2,6 +2,7 @@ package com.projeto.ecommerce.services.user;
 
 import com.projeto.ecommerce.dto.UserEntityDto;
 import com.projeto.ecommerce.entities.UserEntity;
+import com.projeto.ecommerce.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +13,15 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserServiceImp{
+
+    private final UserRepository userRepository;
+
+
     @Override
     public UserEntityDto create(UserEntityDto dto) {
-        return null;
+
+
+        return ;
     }
 
     @Override

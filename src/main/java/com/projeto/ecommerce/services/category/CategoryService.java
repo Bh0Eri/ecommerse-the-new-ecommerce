@@ -2,6 +2,7 @@ package com.projeto.ecommerce.services.category;
 
 import com.projeto.ecommerce.dto.CategoryEntityDto;
 import com.projeto.ecommerce.entities.CategoryEntity;
+import com.projeto.ecommerce.repositories.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,10 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class CategoryService implements CategoryServiceImp{
+
+    private final CategoryRepository categoryRepository;
+
+
     @Override
     public CategoryEntityDto create(CategoryEntityDto dto) {
 
