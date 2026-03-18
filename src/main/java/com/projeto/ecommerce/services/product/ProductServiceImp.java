@@ -13,7 +13,7 @@ public interface ProductServiceImp {
 
     Optional<ProductEntityDto> showone(UUID id);
 
-    List<ProductEntity> showall();
+    List<ProductEntityDto> showall();
 
     void delete(UUID id);
 

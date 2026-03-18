@@ -5,14 +5,16 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import java.io.Serializable;
 
-/**
- * DTO for {@link ProductEntity}
- */
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductEntityDto implements Serializable {
     @NotNull
     @Size(min = 6, max = 40)
