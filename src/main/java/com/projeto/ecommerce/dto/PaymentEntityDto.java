@@ -1,15 +1,17 @@
 package com.projeto.ecommerce.dto;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * DTO for {@link com.projeto.ecommerce.entities.PaymentEntity}
- */
-@Value
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class PaymentEntityDto implements Serializable {
     @NotNull
     LocalDate moment;
