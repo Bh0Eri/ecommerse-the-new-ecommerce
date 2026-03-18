@@ -4,18 +4,16 @@ import com.projeto.ecommerce.enums.RoleEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * DTO for {@link com.projeto.ecommerce.entities.UserEntity}
- */
-/**
- * DTO for {@link com.projeto.ecommerce.repositories.UserEntity}
- */
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserEntityDto implements Serializable {
     @NotNull
     @Size(min = 4, max = 20)
@@ -30,4 +28,6 @@ public class UserEntityDto implements Serializable {
     RoleEnum roles;
     @NotNull
     List<OrderEntityDto> orders;
+
+
 }
