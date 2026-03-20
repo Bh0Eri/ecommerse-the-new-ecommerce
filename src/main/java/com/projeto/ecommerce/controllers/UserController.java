@@ -1,4 +1,4 @@
-package com.projeto.ecommerce.controller;
+package com.projeto.ecommerce.controllers;
 
 import com.projeto.ecommerce.dto.UserEntityDto;
 import com.projeto.ecommerce.entities.UserEntity;
