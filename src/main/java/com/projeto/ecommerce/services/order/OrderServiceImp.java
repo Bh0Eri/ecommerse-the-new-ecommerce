@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface OrderServiceImp {
 
-    OrderEntityDto create(OrderEntity dto);
+    OrderEntityDto create(OrderEntityDto dto);
 
     Optional<OrderEntity> showone(UUID id);
 
