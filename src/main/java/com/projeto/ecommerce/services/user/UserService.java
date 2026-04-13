@@ -1,11 +1,13 @@
 package com.projeto.ecommerce.services.user;
 
+import com.projeto.ecommerce.config.UserConfig;
 import com.projeto.ecommerce.dto.UserEntityDto;
 import com.projeto.ecommerce.entities.UserEntity;
 import com.projeto.ecommerce.exceptions.ResourceNotFoundException;
 import com.projeto.ecommerce.repositories.UserRepository;
 import com.projeto.ecommerce.services.user.UserServiceImp;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,8 @@ public class UserService implements UserServiceImp {
 
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     public UserEntityDto create(UserEntityDto dto) {
 
@@ -25,7 +29,7 @@ public class UserService implements UserServiceImp {
 
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
-        user.setPassword(dto.getPassword());
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         UserEntity savedUser = userRepository.save(user);
 
