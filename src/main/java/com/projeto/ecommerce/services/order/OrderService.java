@@ -22,7 +22,7 @@ public class OrderService implements OrderServiceImp {
 
 
     @Override
-    public OrderEntityDto create(OrderEntityDto dto) {
+    public OrderEntityDto create(OrderEntity dto) {
 
         OrderEntity order = new OrderEntity();
 
