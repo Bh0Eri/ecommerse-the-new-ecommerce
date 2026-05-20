@@ -23,4 +23,5 @@ public class ProductEntityDto implements Serializable {
     String description;
     @Min(message = "Not accept less than 1", value = 1)
     double price;
+    String imgURL;
 }
