@@ -1,32 +1,34 @@
 package com.projeto.ecommerce.controllers;
 
-
 import com.projeto.ecommerce.dto.LoginDto;
 import com.projeto.ecommerce.services.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
-@RestController(value = "/jwt")
+@RestController
+@RequestMapping("/auth")
 public class AuthController {
 
-    JwtService jwtService;
-
-    private AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginDto loginDto) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getEmail(),
                         loginDto.getPassword()
                 )
         );
-        return jwtService.generateToken(loginDto.getEmail());
+
+        String token = jwtService.generateToken(loginDto.getEmail());
+
+        return ResponseEntity.ok(Map.of("token", token));
     }
 }
