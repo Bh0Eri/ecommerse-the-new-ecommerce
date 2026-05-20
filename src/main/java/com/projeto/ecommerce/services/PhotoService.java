@@ -1,6 +1,6 @@
 package com.projeto.ecommerce.services;
 
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,7 +13,7 @@ import java.util.UUID;
 @Service
 public class PhotoService implements PhotoServiceInt{
 
-    @Value("{upload.dir}")
+    @Value("${upload.dir}")
     private String uploadDir;
 
     @Override
