@@ -23,13 +23,14 @@ public class UserService implements UserServiceImp {
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserEntityDto create(UserEntityDto dto) {
+    public UserEntityDto create(UserEntityDto dto, String imgUrl) {
 
         UserEntity user = new UserEntity();
 
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        user.setImgUrl(imgUrl);
 
         UserEntity savedUser = userRepository.save(user);
 

@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public interface UserServiceImp {
 
-    UserEntityDto create(UserEntityDto dto);
+    UserEntityDto create(UserEntityDto dto, String imgUrl);
 
     Optional<UserEntityDto> showone(UUID id);
 

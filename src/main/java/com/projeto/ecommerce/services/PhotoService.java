@@ -1,4 +1,4 @@
-package com.projeto.ecommerce.services.product;
+package com.projeto.ecommerce.services;
 
 import lombok.Value;
 import org.springframework.stereotype.Service;
@@ -7,16 +7,16 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.UUID;
 
 @Service
-public class PhotoService {
+public class PhotoService implements PhotoServiceInt{
 
     @Value("{upload.dir}")
     private String uploadDir;
 
+    @Override
     public String saveP(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
         String extension = fileName.substring(fileName.lastIndexOf("."));

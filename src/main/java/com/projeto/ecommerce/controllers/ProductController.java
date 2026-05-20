@@ -1,9 +1,8 @@
 package com.projeto.ecommerce.controllers;
 
 import com.projeto.ecommerce.dto.ProductEntityDto;
-import com.projeto.ecommerce.entities.ProductEntity;
 import com.projeto.ecommerce.exceptions.ResourceNotFoundException;
-import com.projeto.ecommerce.services.product.PhotoService;
+import com.projeto.ecommerce.services.PhotoService;
 import com.projeto.ecommerce.services.product.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +29,7 @@ public class ProductController {
 
         String pathPhoto =photoService.saveP(imgUrl);
 
-        return ResponseEntity.ok(productService.create(dto.getName(), dto.getDescription(), dto.getPrice()));
+        return ResponseEntity.ok(productService.create(dto,pathPhoto));
     }
 
     @GetMapping
