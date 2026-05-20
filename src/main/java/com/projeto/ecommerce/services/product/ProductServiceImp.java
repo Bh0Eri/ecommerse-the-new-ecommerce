@@ -9,7 +9,8 @@ import java.util.UUID;
 
 public interface ProductServiceImp {
 
-    ProductEntityDto create(ProductEntityDto dto);
+
+    ProductEntityDto create(ProductEntityDto dto, String imgUrl);
 
     Optional<ProductEntityDto> showone(UUID id);
 

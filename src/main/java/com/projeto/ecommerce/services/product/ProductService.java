@@ -6,7 +6,6 @@ import com.projeto.ecommerce.exceptions.ResourceNotFoundException;
 import com.projeto.ecommerce.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,14 +19,14 @@ public class ProductService implements ProductServiceImp {
     private final ProductRepository productRepository;
 
     @Override
-    public ProductEntityDto create(ProductEntityDto dto) {
+    public ProductEntityDto create(ProductEntityDto dto, String imgUrl) {
 
         ProductEntity product = new ProductEntity();
 
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
-        product.setImgURL(dto.getImgURL());
+        product.setImgURL(imgUrl);
 
         ProductEntity savedProduct = productRepository.save(product);
 
@@ -48,8 +47,7 @@ public class ProductService implements ProductServiceImp {
                 .map(product -> new ProductEntityDto(
                         product.getName(),
                         product.getDescription(),
-                        product.getPrice(),
-                        product.getImgURL()
+                        product.getPrice()
                 ))
                 .toList();
     }
@@ -69,7 +67,6 @@ public class ProductService implements ProductServiceImp {
         product.setName(dto.getName());
         product.setDescription(dto.getDescription());
         product.setPrice(dto.getPrice());
-        product.setImgURL(dto.getImgURL());
 
         ProductEntity updatedProduct = productRepository.save(product);
 
@@ -81,8 +78,7 @@ public class ProductService implements ProductServiceImp {
         return new ProductEntityDto(
                 product.getName(),
                 product.getDescription(),
-                product.getPrice(),
-                product.getImgURL()
+                product.getPrice()
         );
     }
 

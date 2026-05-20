@@ -25,14 +25,12 @@ public class ProductController {
     private final PhotoService photoService;
 
     @PostMapping
-    public ResponseEntity<ProductEntityDto> create(@RequestParam String name,
-                                                   @RequestParam String description,
-                                                   @RequestParam double price,
+    public ResponseEntity<ProductEntityDto> create(@RequestBody @Valid ProductEntityDto dto,
                                                    @RequestParam MultipartFile imgUrl) throws IOException {
 
         String pathPhoto =photoService.saveP(imgUrl);
 
-        return ResponseEntity.ok(productService.create(name, description, price, imgUrl));
+        return ResponseEntity.ok(productService.create(dto.getName(), dto.getDescription(), dto.getPrice()));
     }
 
     @GetMapping
